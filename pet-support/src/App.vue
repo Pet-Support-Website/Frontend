@@ -1,30 +1,70 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <!--Navigation Bar.-->
+  <nav
+    class="navbar navbar-expand-lg navbar-light justify-content-between"
+    id="nav"
+  >
+    <router-link class="navbar-brand" to="/"
+      ><img class="logo" src="./assets/pet-support-logo.png" alt=""
+    /></router-link>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <router-link class="nav-link" to="/">Home</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/">Diagnosis System</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/"
+            >Vet Hospitals & Clinics Near You</router-link
+          >
+        </li>
+      </ul>
+      <form class="d-flex input-group w-auto" style="margin-left: 15px">
+        <input
+          type="search"
+          class="form-control rounded"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+        <span
+          class="input-group-text border-0"
+          id="search"
+          style="background-color: white"
+          ><font-awesome-icon icon="fa-solid fa-magnifying-glass" size="xs"
+        /></span>
+      </form>
+    </div>
   </nav>
   <router-view />
 </template>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Bahnschrift', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  color: rgb(32, 48, 48);
+}
+#nav {
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.logo {
+  width: 400px;
+  height: auto;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  font-weight: bold;
+  color: #1bbf8c;
+}
+
+nav a.router-link-exact-active:hover {
+  font-weight: bold;
+  color: #1fdda4;
 }
 </style>
