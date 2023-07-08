@@ -1,20 +1,66 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import AboutView from '../views/AboutView.vue'
+import ArticleService from '@/services/ArticleService.js'
+import GStore from '@/store'
+import NetWorkErrorView from '@/views/NetworkErrorView.vue'
+import CardLayoutView from '@/views/Pets/CardLayoutView.vue'
+import ArticleDetailsView from '@/views/Pets/ArticleDetailsView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    beforeEnter: () => {
+      return ArticleService.getArticles()
+        .then((response) => {
+          GStore.articles = response.data
+          console.log(GStore.article)
+        })
+        .catch(() => {
+          GStore.articles = []
+          console.log('cannot load article')
+        })
+    }
   },
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: AboutView
+  },
+  {
+    path: '/:articleFilter',
+    name: 'CardLayoutView',
+    component: CardLayoutView,
+    props: true
+  },
+  {
+    path: '/article/:id',
+    name: 'ArticleDetailsView',
+    component: ArticleDetailsView,
+    props: true,
+    beforeEnter: (to) => {
+      return ArticleService.getArticle(to.params.id)
+        .then((response) => {
+          GStore.article = response.data
+        })
+        .catch((error) => {
+          if (error.response && error.response.start == 404) {
+            return {
+              name: '404Resource',
+              params: { resource: 'article' }
+            }
+          } else {
+            return { name: 'NetworkError' }
+          }
+        })
+    }
+  },
+  {
+    path: '/network-error',
+    name: 'NetworkError',
+    component: NetWorkErrorView
   }
 ]
 

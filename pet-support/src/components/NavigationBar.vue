@@ -4,25 +4,79 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav m-auto">
         <li class="nav-item">
-          <router-link class="nav-link" to="/">DOGS</router-link>
+          <router-link
+            class="nav-link sub-nav"
+            :to="{
+              name: 'CardLayoutView',
+              params: { articleFilter: 'dog' }
+            }"
+            >DOGS</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/">CATS</router-link>
+          <router-link
+            class="nav-link sub-nav"
+            :to="{
+              name: 'CardLayoutView',
+              params: { articleFilter: 'cat' }
+            }"
+            >CATS</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/">FISH</router-link>
+          <router-link
+            class="nav-link sub-nav"
+            :to="{
+              name: 'CardLayoutView',
+              params: { articleFilter: 'fish' }
+            }"
+            >FISH</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/">BIRDS</router-link>
+          <router-link
+            class="nav-link sub-nav"
+            :to="{
+              name: 'CardLayoutView',
+              params: { articleFilter: 'bird' }
+            }"
+            >BIRDS</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/">RABBITS</router-link>
+          <router-link
+            class="nav-link sub-nav"
+            :to="{
+              name: 'CardLayoutView',
+              params: { articleFilter: 'rabbit' }
+            }"
+            >RABBITS</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/">RODENTS</router-link>
+          <router-link
+            class="nav-link sub-nav"
+            :to="{
+              name: 'CardLayoutView',
+              params: { articleFilter: 'rodent' }
+            }"
+            >RODENTS</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/">REPTILES</router-link>
+          <router-link
+            class="nav-link sub-nav"
+            :to="{
+              name: 'CardLayoutView',
+              params: { articleFilter: 'reptile' }
+            }"
+            >REPTILES</router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link sub-nav" to="/about" id="about-us"
+            >ABOUT US</router-link
+          >
         </li>
       </ul>
     </div>
@@ -39,6 +93,7 @@ export default {
 <style scoped>
 nav {
   text-align: center;
+  font-size: 16px;
   padding: 5px;
 }
 
@@ -48,17 +103,25 @@ hr {
   color: gray;
 }
 
-nav a.router-link-exact-active {
+nav a.sub-nav {
   margin-left: 5px;
   margin-right: 5px;
   font-weight: 300;
   color: darkslategray;
 }
 
-nav a.router-link-exact-active:hover {
-  margin-left: 5px;
-  margin-right: 5px;
+nav a.sub-nav:hover {
   font-weight: 400;
   color: darkslategray;
+}
+
+#about-us {
+  color: #1bbf8c;
+  font-weight: 500;
+}
+
+#about-us:hover {
+  color: #1fdda4;
+  font-weight: 500;
 }
 </style>

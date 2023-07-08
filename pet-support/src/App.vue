@@ -41,16 +41,40 @@
   <router-view />
 </template>
 
+<script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+export default {
+  components: { FontAwesomeIcon }
+}
+</script>
+
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 #app {
   font-family: 'Bahnschrift', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: rgb(32, 48, 48);
 }
+
+h1 {
+  font-size: 60px;
+  font-weight: 700;
+  font-family: 'Righteous';
+  letter-spacing: 2px;
+  color: darkslategray;
+}
+
+p {
+  font-weight: 300;
+  font-size: 18px;
+}
+
 #nav {
   margin-left: 30px;
   margin-right: 30px;
+  font-size: 18px;
 }
 
 .logo {
@@ -58,12 +82,12 @@
   height: auto;
 }
 
-nav a.router-link-exact-active {
+nav a.nav-link {
   font-weight: bold;
   color: #1bbf8c;
 }
 
-nav a.router-link-exact-active:hover {
+nav a.nav-link:hover {
   font-weight: bold;
   color: #1fdda4;
 }
