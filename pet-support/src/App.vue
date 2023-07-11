@@ -39,13 +39,14 @@
     </div>
   </nav>
   <router-view />
+  <FooterView />
 </template>
 
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
+import FooterView from '@/components/Footer.vue'
 export default {
-  components: { FontAwesomeIcon }
+  components: { FontAwesomeIcon, FooterView }
 }
 </script>
 
@@ -55,7 +56,9 @@ export default {
   font-family: 'Bahnschrift', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: rgb(32, 48, 48);
+  color: darkslategray;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
@@ -64,6 +67,12 @@ h1 {
   font-family: 'Righteous';
   letter-spacing: 2px;
   color: darkslategray;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 p {

@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     formattedText() {
-      return this.article.content.replace(/\n/g, '<br>') // Replace &#10; with <br> tags
+      return this.article.content.replace(/%&07%/g, '<br>') // Replace &#10; with <br> tags
     }
   }
 }
@@ -43,5 +43,6 @@ span {
 
 #Details {
   margin-top: 50px;
+  margin-bottom: 70px;
 }
 </style>

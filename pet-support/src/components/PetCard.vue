@@ -27,19 +27,26 @@ export default {
 .pet-card {
   padding: 20px;
   text-align: left;
-  width: 97%;
+  width: 300px;
+  height: 150px;
+  max-height: 150px;
   cursor: pointer;
   border: 1px solid rgb(175, 174, 174);
   border-radius: 5px;
-  margin-bottom: 18px;
+  margin: 5px;
+  vertical-align: top;
+  display: inline-block;
 }
 
 h4 {
   font-weight: 600;
+  font-size: 20px;
+  font-family: 'Righteous';
+  text-transform: uppercase;
 }
 
 span {
-  font-weight: 300;
+  font-weight: 400;
 }
 .pet-card:hover {
   background-color: rgba(243, 243, 243, 0.878);

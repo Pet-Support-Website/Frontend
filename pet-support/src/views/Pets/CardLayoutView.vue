@@ -4,30 +4,27 @@
       <NavigationBar />
     </div>
     <div id="layout">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <h1>
-              <a style="color: darkslategray; text-transform: uppercase">
-                {{ articleFilter }}
-                <a style="color: #1fdda4">CARE</a>
-              </a>
-            </h1>
-            <p style="margin-top: 15px">
-              Are you a dog parent? We're here to help you keep your pup happy
-              and healthy. Read more for a wide range of dog health and behavior
-              tips that will help you provide the best possible care for your
-              canine companion.
-            </p>
-            <div>
-              <PetCard
-                v-for="filteredArticle in filteredArticles"
-                :key="filteredArticle.id"
-                :article="filteredArticle"
-              ></PetCard>
-            </div>
+      <div class="row d-flex justify-content-center" style="margin: 0">
+        <div class="col-md-10">
+          <h1>
+            <a style="color: darkslategray; text-transform: uppercase">
+              {{ articleFilter }}
+              <a style="color: #1fdda4">CARE</a>
+            </a>
+          </h1>
+          <p>
+            Are you a dog parent? We're here to help you keep your pup happy and
+            healthy. Read more for a wide range of dog health and behavior tips
+            that will help you provide the best possible care for your canine
+            companion.
+          </p>
+          <div>
+            <PetCard
+              v-for="filteredArticle in filteredArticles"
+              :key="filteredArticle.id"
+              :article="filteredArticle"
+            ></PetCard>
           </div>
-          <div class="col"></div>
         </div>
       </div>
     </div>
@@ -102,5 +99,7 @@ export default {
 <style scoped>
 #layout {
   margin-top: 50px;
+  margin-bottom: 70px;
+  align-items: center;
 }
 </style>
