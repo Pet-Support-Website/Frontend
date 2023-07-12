@@ -19,7 +19,15 @@
               disease and illnesses based on observable symptoms to better
               understand their pet's condition.
             </p>
-            <router-link to="/about"><button>About us</button></router-link>
+            <router-link to="/about"
+              ><button class="about-btn">More about us</button></router-link
+            >
+            <button
+              class="git-btn"
+              onclick="window.location.href='https://github.com/Pet-Support-Website/Frontend';"
+            >
+              View GitHub
+            </button>
           </div>
           <div class="col">
             <img class="image" src="@/assets/infographic1.png" alt="" />
@@ -99,14 +107,33 @@ export default {
   align-items: center;
 }
 
-button {
+.git-btn {
   margin-top: 10px;
-  color: white;
-  background-color: #1fdda4;
-  padding: 10px 70px;
+  color: darkslategray;
+  background-color: lightgray;
+  padding: 10px 55px;
   font-size: 18px;
   border: none;
   border-radius: 5px;
+  margin-left: 20px;
+}
+
+.git-btn:hover {
+  background-color: rgb(200, 200, 200);
+}
+
+.about-btn {
+  margin-top: 10px;
+  color: white;
+  background-color: #1fdda4;
+  padding: 10px 50px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+}
+
+.about-btn:hover {
+  background-color: #1bbf8c;
 }
 
 #box {

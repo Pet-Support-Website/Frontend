@@ -7,9 +7,10 @@
       <div class="row d-flex justify-content-center" style="margin: 0">
         <div class="col-md-10">
           <h1>
-            <a style="color: darkslategray; text-transform: uppercase">
+            GENERAL
+            <a style="color: #1fdda4; text-transform: uppercase">
               {{ articleFilter }}
-              <a style="color: #1fdda4">CARE</a>
+              <a>CARE</a>
             </a>
           </h1>
           <p>

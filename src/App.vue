@@ -20,22 +20,13 @@
             >Vet Hospitals & Clinics Near You</router-link
           >
         </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/"
+            ><button class="login-btn">Log in</button></router-link
+          >
+        </li>
       </ul>
-      <form class="d-flex input-group w-auto" style="margin-left: 15px">
-        <input
-          type="search"
-          class="form-control rounded"
-          placeholder="Search"
-          aria-label="Search"
-          aria-describedby="search-addon"
-        />
-        <span
-          class="input-group-text border-0"
-          id="search"
-          style="background-color: white"
-          ><font-awesome-icon icon="fa-solid fa-magnifying-glass" size="xs"
-        /></span>
-      </form>
+      <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
     </div>
   </nav>
   <router-view />
@@ -59,6 +50,20 @@ export default {
   color: darkslategray;
   margin: 0;
   padding: 0;
+}
+
+.login-btn {
+  color: white;
+  background-color: #1fdda4;
+  font-weight: bold;
+  padding: 0px 30px;
+  font-size: 18px;
+  border: 1px solid #1fdda4;
+  border-radius: 5px;
+}
+
+.login-btn:hover {
+  background-color: #1bbf8c;
 }
 
 h1 {
@@ -93,11 +98,11 @@ p {
 
 nav a.nav-link {
   font-weight: bold;
-  color: #1bbf8c;
+  color: #1fdda4;
 }
 
 nav a.nav-link:hover {
   font-weight: bold;
-  color: #1fdda4;
+  color: #1bbf8c;
 }
 </style>

@@ -116,12 +116,12 @@ nav a.sub-nav:hover {
 }
 
 #about-us {
-  color: #1bbf8c;
+  color: #1fdda4;
   font-weight: 500;
 }
 
 #about-us:hover {
-  color: #1fdda4;
+  color: #1bbf8c;
   font-weight: 500;
 }
 </style>
