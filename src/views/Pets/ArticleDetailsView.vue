@@ -8,6 +8,9 @@
         <h1 style="text-transform: uppercase">{{ article.title }}</h1>
         <span>{{ article.source }}</span>
         <p v-html="formattedText"></p>
+        <div>
+          <img class="article-img" :src="article.imgUrl" />
+        </div>
       </div>
     </div>
   </section>
@@ -39,6 +42,13 @@ span {
   font-weight: 500;
   line-height: 3;
   color: darkslategray;
+}
+
+.article-img {
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 5px;
+  height: auto;
 }
 
 #Details {
