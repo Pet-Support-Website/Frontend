@@ -21,6 +21,7 @@ const routes = [
         .catch(() => {
           GStore.articles = []
           console.log('cannot load article')
+          return { name: 'NetworkError' }
         })
     }
   },
@@ -48,7 +49,7 @@ const routes = [
         .catch((error) => {
           if (error.response && error.response.start == 404) {
             return {
-              name: '404Resource',
+              name: 'Network Error',
               params: { resource: 'article' }
             }
           } else {
