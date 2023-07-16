@@ -1,9 +1,13 @@
 <template>
   <router-link
     class="pet-link"
+    @click="scrollToTop"
     :to="{ name: 'ArticleDetailsView', params: { id: article.id } }"
   >
     <div class="pet-card">
+      <div>
+        <img class="article-img" :src="article.imgUrl" />
+      </div>
       <h4>{{ article.title }}</h4>
       <span>{{ article.source }}</span>
     </div>
@@ -19,17 +23,29 @@ export default {
       type: Object,
       required: true
     }
+  },
+  methods: {
+    scrollToTop() {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    }
   }
 }
 </script>
 
 <style scoped>
+.article-img {
+  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  height: 150px;
+  max-height: 150px;
+}
 .pet-card {
   padding: 20px;
   text-align: left;
   width: 300px;
-  height: 150px;
-  max-height: 150px;
+  height: 300px;
   cursor: pointer;
   border: 1px solid rgb(175, 174, 174);
   border-radius: 5px;
@@ -39,9 +55,8 @@ export default {
 }
 
 h4 {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 20px;
-  font-family: 'Righteous';
   text-transform: uppercase;
 }
 

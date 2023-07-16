@@ -6,20 +6,19 @@
     <div id="layout">
       <div class="row d-flex justify-content-center" style="margin: 0">
         <div class="col-md-10">
-          <h1>
+          <h1 style="text-transform: uppercase">
             GENERAL
-            <a style="color: #1fdda4; text-transform: uppercase">
-              {{ articleFilter }}
-              <a>CARE</a>
-            </a>
+            <a style="color: #1fdda4">{{ articleFilter }} CARE</a>
           </h1>
-          <p>
-            Are you a dog parent? We're here to help you keep your pup happy and
-            healthy. Read more for a wide range of dog health and behavior tips
-            that will help you provide the best possible care for your canine
-            companion.
+          <p style="margin-left: 5px">
+            <span v-for="article in articles" :key="article.id">
+              <span v-if="article.id === 1">
+                {{ article.content }}
+              </span>
+            </span>
           </p>
-          <div>
+          <div v-for="allTag in allTags" :key="allTag.id">
+            <h4 style="text-transform: uppercase">{{ allTag }}</h4>
             <PetCard
               v-for="filteredArticle in filteredArticles"
               :key="filteredArticle.id"
@@ -69,31 +68,24 @@ export default {
           }
         })
       })
+      articleArray.shift()
       return articleArray
+    },
+    allTags() {
+      let tagArray = []
+      let uniqArray = []
+      this.articles.forEach((a) => {
+        a.tags.forEach((t) => {
+          tagArray.push(t.tagname)
+        })
+      })
+      uniqArray = [...new Set(tagArray)]
+      uniqArray.shift()
+      uniqArray.shift()
+      console.log(uniqArray)
+      return uniqArray
     }
   }
-  /* eslint-disable-next-line no-unused-vars */
-  // beforeRouteEnter(routeTo, routeFrom, next) {
-  //   ArticleService.getArticles()
-  //     .then((response) => {
-  //       next((comp) => {
-  //         comp.articles = response.data
-  //       })
-  //     })
-  //     .catch(() => {
-  //       next({ name: 'NetworkError' })
-  //     })
-  // },
-  // beforeRouteUpdate(routeTo, routeFrom, next) {
-  //   ArticleService.getArticles()
-  //     .then((response) => {
-  //       this.articles = response.data
-  //       next()
-  //     })
-  //     .catch(() => {
-  //       next({ name: 'NetworkError' })
-  //     })
-  // }
 }
 </script>
 
@@ -102,5 +94,13 @@ export default {
   margin-top: 50px;
   margin-bottom: 70px;
   align-items: center;
+}
+
+h4 {
+  font-family: 'Righteous';
+  font-weight: 600;
+  margin-top: 10px;
+  margin-left: 5px;
+  color: #1bbf8c;
 }
 </style>
