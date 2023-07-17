@@ -17,13 +17,19 @@
               </span>
             </span>
           </p>
-          <div v-for="allTag in allTags" :key="allTag.id">
-            <h4 style="text-transform: uppercase">{{ allTag }}</h4>
-            <PetCard
+          <div v-for="tag in displayTags" :key="tag.id">
+            <h4 style="text-transform: uppercase">{{ tag }}</h4>
+            <div
+              class="display-block"
               v-for="filteredArticle in filteredArticles"
               :key="filteredArticle.id"
-              :article="filteredArticle"
-            ></PetCard>
+            >
+              <div v-for="tags in filteredArticle.tags" :key="tags.id">
+                <div v-if="tags.tagname === tag">
+                  <PetCard :article="filteredArticle"></PetCard>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -54,7 +60,8 @@ export default {
   data() {
     return {
       articles: GStore.articles,
-      filter: this.articleFilter
+      filter: this.articleFilter,
+      displayTags: ['general', 'health', 'behavior issues', 'diseases']
     }
   },
   computed: {
@@ -68,22 +75,9 @@ export default {
           }
         })
       })
-      articleArray.shift()
+      console.log(this.displayTags)
+      console.log(articleArray)
       return articleArray
-    },
-    allTags() {
-      let tagArray = []
-      let uniqArray = []
-      this.articles.forEach((a) => {
-        a.tags.forEach((t) => {
-          tagArray.push(t.tagname)
-        })
-      })
-      uniqArray = [...new Set(tagArray)]
-      uniqArray.shift()
-      uniqArray.shift()
-      console.log(uniqArray)
-      return uniqArray
     }
   }
 }
@@ -94,6 +88,10 @@ export default {
   margin-top: 50px;
   margin-bottom: 70px;
   align-items: center;
+}
+
+.display-block {
+  display: inline-block;
 }
 
 h4 {

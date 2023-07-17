@@ -11,7 +11,18 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView,
+    component: HomeView
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: AboutView
+  },
+  {
+    path: '/:articleFilter',
+    name: 'CardLayoutView',
+    component: CardLayoutView,
+    props: true,
     beforeEnter: () => {
       return ArticleService.getArticles()
         .then((response) => {
@@ -24,17 +35,6 @@ const routes = [
           return { name: 'NetworkError' }
         })
     }
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: AboutView
-  },
-  {
-    path: '/:articleFilter',
-    name: 'CardLayoutView',
-    component: CardLayoutView,
-    props: true
   },
   {
     path: '/article/:id',
