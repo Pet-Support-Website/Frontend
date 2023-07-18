@@ -11,9 +11,11 @@
             <a style="color: #1fdda4">{{ articleFilter }} CARE</a>
           </h1>
           <p style="margin-left: 5px">
-            <span v-for="article in articles" :key="article.id">
-              <span v-if="article.id === 1">
-                {{ article.content }}
+            <span v-for="article in filteredArticles" :key="article.id">
+              <span v-for="tag in article.tags" :key="tag.id">
+                <span v-if="tag.tagname === 'headline'">
+                  {{ article.content }}
+                </span>
               </span>
             </span>
           </p>
