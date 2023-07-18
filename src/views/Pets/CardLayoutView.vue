@@ -75,7 +75,6 @@ export default {
           }
         })
       })
-      console.log(this.displayTags)
       console.log(articleArray)
       return articleArray
     }

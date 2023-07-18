@@ -5,8 +5,11 @@
     :to="{ name: 'ArticleDetailsView', params: { id: article.id } }"
   >
     <div class="pet-card">
-      <div>
+      <div v-if="article.imgUrl !== ''">
         <img class="article-img" :src="article.imgUrl" />
+      </div>
+      <div v-else>
+        <img class="article-img" src="@/assets/empty-img.png" alt="" />
       </div>
       <h4>{{ article.title }}</h4>
       <span>{{ article.source }}</span>
@@ -41,6 +44,7 @@ export default {
   height: 150px;
   max-height: 150px;
 }
+
 .pet-card {
   padding: 20px;
   text-align: left;
