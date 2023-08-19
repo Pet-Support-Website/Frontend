@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import ArticleService from '@/services/ArticleService.js'
+import TagService from '@/services/TagService.js'
+import CardLayoutByTagView from '@/views/Pets/CardLayoutByTagView.vue'
 import GStore from '@/store'
 import NetWorkErrorView from '@/views/NetworkErrorView.vue'
 import CardLayoutView from '@/views/Pets/CardLayoutView.vue'
@@ -55,6 +57,24 @@ const routes = [
           } else {
             return { name: 'NetworkError' }
           }
+        })
+    }
+  },
+  {
+    path: '/searchTags?_tagname=:tagname',
+    name: 'CardLayoutByTagView',
+    component: CardLayoutByTagView,
+    props: true,
+    beforeEnter: () => {
+      return TagService.getTags()
+        .then((response) => {
+          GStore.tags = response.data
+          console.log(GStore.tags)
+        })
+        .catch(() => {
+          GStore.tags = []
+          console.log('cannot load tags')
+          return { name: 'NetworkError' }
         })
     }
   },

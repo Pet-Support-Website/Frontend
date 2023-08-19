@@ -58,7 +58,7 @@
             class="nav-link sub-nav"
             :to="{
               name: 'CardLayoutView',
-              params: { articleFilter: 'rodent' }
+              params: { articleFilter: 'rodents' }
             }"
             >RODENTS</router-link
           >

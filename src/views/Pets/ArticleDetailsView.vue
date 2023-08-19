@@ -6,7 +6,20 @@
     <div id="Details">
       <div class="container">
         <h1 style="text-transform: uppercase">{{ article.title }}</h1>
-        <span>{{ article.source }}</span>
+        <p style="font-weight: bold">{{ article.source }}</p>
+        <div>
+          <p style="font-weight: bold">
+            <a v-for="tag in article.tags" :key="tag.id">
+              <router-link
+                :to="{
+                  name: 'CardLayoutByTagView',
+                  params: { tagname: tag.tagname }
+                }"
+                >#{{ tag.tagname }}</router-link
+              >
+            </a>
+          </p>
+        </div>
         <p v-html="formattedText"></p>
         <div>
           <img class="article-img" :src="article.imgUrl" />
@@ -54,5 +67,14 @@ span {
 #Details {
   margin-top: 50px;
   margin-bottom: 70px;
+}
+
+a {
+  margin-right: 10px;
+  color: #1fdda4;
+}
+
+a:hover {
+  color: #1bbf8c;
 }
 </style>
