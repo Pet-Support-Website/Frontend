@@ -8,7 +8,7 @@
             class="nav-link sub-nav"
             :to="{
               name: 'CardLayoutView',
-              params: { articleFilter: 'dog' }
+              params: { articleFilter: 'dog', title: 'General Fish Care' }
             }"
             >DOGS</router-link
           >
@@ -18,7 +18,7 @@
             class="nav-link sub-nav"
             :to="{
               name: 'CardLayoutView',
-              params: { articleFilter: 'cat' }
+              params: { articleFilter: 'cat', title: 'General Fish Care' }
             }"
             >CATS</router-link
           >
@@ -28,7 +28,7 @@
             class="nav-link sub-nav"
             :to="{
               name: 'CardLayoutView',
-              params: { articleFilter: 'fish' }
+              params: { articleFilter: 'fish', title: 'General Fish Care' }
             }"
             >FISH</router-link
           >
@@ -38,7 +38,7 @@
             class="nav-link sub-nav"
             :to="{
               name: 'CardLayoutView',
-              params: { articleFilter: 'bird' }
+              params: { articleFilter: 'bird', title: 'General Bird Care' }
             }"
             >BIRDS</router-link
           >
@@ -48,7 +48,7 @@
             class="nav-link sub-nav"
             :to="{
               name: 'CardLayoutView',
-              params: { articleFilter: 'rabbit' }
+              params: { articleFilter: 'rabbit', title: 'General Rabbit Care' }
             }"
             >RABBITS</router-link
           >
@@ -58,7 +58,10 @@
             class="nav-link sub-nav"
             :to="{
               name: 'CardLayoutView',
-              params: { articleFilter: 'rodents' }
+              params: {
+                articleFilter: 'rodents',
+                title: 'General Rodents Care'
+              }
             }"
             >RODENTS</router-link
           >
@@ -68,7 +71,10 @@
             class="nav-link sub-nav"
             :to="{
               name: 'CardLayoutView',
-              params: { articleFilter: 'reptile' }
+              params: {
+                articleFilter: 'reptile',
+                title: 'General Reptile Care'
+              }
             }"
             >REPTILES</router-link
           >

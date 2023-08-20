@@ -2,7 +2,10 @@
   <router-link
     class="pet-link"
     @click="scrollToTop"
-    :to="{ name: 'ArticleDetailsView', params: { id: article.id } }"
+    :to="{
+      name: 'ArticleDetailsView',
+      params: { id: article.id, title: article.title }
+    }"
   >
     <div class="pet-card">
       <div v-if="article.imgUrl !== ''">

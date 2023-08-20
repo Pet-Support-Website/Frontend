@@ -71,13 +71,11 @@ export default {
       let articleArray = []
       this.articles.forEach((a) => {
         a.tags.forEach((t) => {
-          console.log(this.filter)
           if (t.tagname == this.articleFilter) {
             articleArray.push(a)
           }
         })
       })
-      console.log(articleArray)
       return articleArray
     }
   }

@@ -47,6 +47,7 @@ const routes = [
       return ArticleService.getArticle(to.params.id)
         .then((response) => {
           GStore.article = response.data
+          document.title = response.data.title
         })
         .catch((error) => {
           if (error.response && error.response.start == 404) {
@@ -88,6 +89,18 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  console.log(to)
+  let documentTitle = `${to.name}`
+  if (to.params.articleFilter) {
+    documentTitle = `general ${to.params.articleFilter} care`
+  } else if (to.params.tagname) {
+    documentTitle = `tag ${to.params.tagname}`
+  }
+  document.title = documentTitle
+  next()
 })
 
 export default router
