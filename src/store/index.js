@@ -4,5 +4,6 @@ export default reactive({
   article: [],
   articles: [],
   tags: [],
+  searchArticles: [],
   user: null
 })

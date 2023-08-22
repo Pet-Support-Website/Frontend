@@ -10,9 +10,9 @@
             <a style="color: darkslategray">TAG </a>{{ tagname }}
           </h1>
           <PetCard
-            v-for="filteredArticle in filteredArticles"
-            :key="filteredArticle.id"
-            :article="filteredArticle"
+            v-for="article in articles"
+            :key="article.id"
+            :article="article"
           ></PetCard>
         </div>
       </div>
@@ -41,25 +41,25 @@ export default {
   },
   data() {
     return {
-      articles: GStore.articles,
+      articles: GStore.searchArticles,
       filter: this.tagname
     }
-  },
-  computed: {
-    filteredArticles() {
-      let articleArray = []
-      this.articles.forEach((a) => {
-        a.tags.forEach((t) => {
-          console.log(this.filter)
-          if (t.tagname == this.tagname) {
-            articleArray.push(a)
-          }
-        })
-      })
-      console.log(articleArray)
-      return articleArray
-    }
   }
+  // computed: {
+  //   filteredArticles() {
+  //     let articleArray = []
+  //     this.articles.forEach((a) => {
+  //       a.tags.forEach((t) => {
+  //         console.log(this.filter)
+  //         if (t.tagname == this.tagname) {
+  //           articleArray.push(a)
+  //         }
+  //       })
+  //     })
+  //     console.log(articleArray)
+  //     return articleArray
+  //   }
+  // }
 }
 </script>
 

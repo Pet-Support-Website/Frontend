@@ -62,20 +62,25 @@ const routes = [
     }
   },
   {
-    path: '/searchTags?_tagname=:tagname',
+    path: '/searchTags/:tagname',
     name: 'CardLayoutByTagView',
     component: CardLayoutByTagView,
     props: true,
-    beforeEnter: () => {
-      return TagService.getTags()
+    beforeEnter: (to) => {
+      return TagService.searchTags(to.params.tagname)
         .then((response) => {
-          GStore.tags = response.data
-          console.log(GStore.tags)
+          GStore.searchArticles = response.data[0].articles
+          document.title = response.data[0].tagname
         })
-        .catch(() => {
-          GStore.tags = []
-          console.log('cannot load tags')
-          return { name: 'NetworkError' }
+        .catch((error) => {
+          if (error.response && error.response.start == 404) {
+            return {
+              name: 'Network Error',
+              params: { resource: 'tag' }
+            }
+          } else {
+            return { name: 'NetworkError' }
+          }
         })
     }
   },
