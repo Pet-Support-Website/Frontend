@@ -13,7 +13,9 @@
           <router-link class="nav-link" to="/">Home</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/">Diagnosis System</router-link>
+          <router-link class="nav-link" to="/diagnosis-system"
+            >Diagnosis System</router-link
+          >
         </li>
         <li class="nav-item">
           <router-link class="nav-link" to="/"
@@ -29,6 +31,7 @@
       <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
     </div>
   </nav>
+  <hr />
   <router-view />
   <FooterView />
 </template>
@@ -72,6 +75,12 @@ h1 {
   font-family: 'Righteous';
   letter-spacing: 2px;
   color: darkslategray;
+}
+
+hr {
+  padding: 0px;
+  margin: 0px;
+  color: gray;
 }
 
 .container {

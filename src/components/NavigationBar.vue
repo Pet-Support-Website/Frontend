@@ -1,5 +1,4 @@
 <template>
-  <hr />
   <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav m-auto">

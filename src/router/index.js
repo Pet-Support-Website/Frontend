@@ -8,6 +8,7 @@ import GStore from '@/store'
 import NetWorkErrorView from '@/views/NetworkErrorView.vue'
 import CardLayoutView from '@/views/Pets/CardLayoutView.vue'
 import ArticleDetailsView from '@/views/Pets/ArticleDetailsView.vue'
+import DiagnosisView from '@/views/DiagnosisView.vue'
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     path: '/about',
     name: 'about',
     component: AboutView
+  },
+  {
+    path: '/diagnosis-system',
+    name: 'diagnosisView',
+    component: DiagnosisView
   },
   {
     path: '/:articleFilter',
