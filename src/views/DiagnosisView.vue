@@ -133,16 +133,28 @@ export default {
         occurringAllergies: '',
         occurringDisease: ''
       },
-      petTypes: ['dog', 'cat', 'bird', 'rabbit'],
+      petTypes: ['dog', 'cat'],
       sexOption: ['male', 'female', 'unknown'],
-      symtomsOption: ['vomiting', 'agression', 'anxiety'],
+      symtomsOption: [
+        'vomiting',
+        'aggression',
+        'anxiety',
+        'food guarding',
+        'coughing',
+        'labored breathing',
+        'lethargy',
+        'fever',
+        'licking, biting and chewing at the bite site',
+        'skin lesions'
+      ],
       booleanOption: ['yes', 'no'],
       output: null
     }
   },
   methods: {
     diagnosis() {
-      let query = this.querys.petType + ' ' + this.querys.symtoms
+      this.output = null
+      let query = this.querys.symtoms + ' ' + this.querys.petType
       DiagnosisService.diagnosisSearch(query)
         .then((response) => {
           this.output = response.data.results
