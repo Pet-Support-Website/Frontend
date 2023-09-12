@@ -11,6 +11,7 @@
     }"
   >
     <option
+      class="options"
       v-for="option in options"
       :value="option"
       :key="option"
@@ -40,3 +41,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.field {
+  height: 35px;
+  border-radius: 5px;
+  border: 1px rgb(175, 174, 174) solid;
+}
+
+label {
+  text-transform: uppercase;
+}
+</style>

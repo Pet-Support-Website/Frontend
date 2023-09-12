@@ -1,11 +1,11 @@
 <template>
   <label v-if="label">{{ label }}</label>
   <input
+    class="field"
     v-bind="$attrs"
     :value="modelValue"
     :placeholder="placeholder"
     @input="inputHandler($event)"
-    class="field"
   />
 </template>
 
@@ -42,3 +42,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.field {
+  height: 35px;
+  border-radius: 5px;
+  border: 1px rgb(175, 174, 174) solid;
+}
+
+label {
+  text-transform: uppercase;
+}
+</style>

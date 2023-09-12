@@ -23,7 +23,7 @@ const routes = [
   },
   {
     path: '/diagnosis-system',
-    name: 'diagnosisView',
+    name: 'diagnosis system',
     component: DiagnosisView
   },
   {
