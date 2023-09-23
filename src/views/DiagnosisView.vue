@@ -18,16 +18,17 @@
             label="Type of your pet"
           />
           <br />
-          <BaseInput v-model="querys.species" type="text" label="Species" />
-          <br />
-          <BaseInput v-model="querys.age" type="text" label="Age" />
-          <br />
-          <BaseSelect :options="sexOption" v-model="querys.sex" label="Sex" />
+          <BaseSelect
+            :options="MainSymtomsOption"
+            v-model="querys.symtoms[0]"
+            label="Symptoms & behaviors"
+          />
           <br />
           <BaseSelect
-            :options="symtomsOption"
-            v-model="querys.symtoms"
-            label="Symptoms & behaviors"
+            :options="SubSymtomsOption"
+            v-model="querys.symtoms[1]"
+            label="More Symtoms?"
+            v-if="querys.symtoms[0] != ''"
           />
           <br />
           <div class="wrap-collabsible">
@@ -42,6 +43,25 @@
                     padding-bottom: 35px;
                   "
                 >
+                  <BaseInput
+                    v-model="querys.species"
+                    type="text"
+                    label="Species"
+                  />
+                  <br />
+                  <BaseSelect
+                    :options="ageOption"
+                    v-model="querys.age"
+                    type="text"
+                    label="Age"
+                  />
+                  <br />
+                  <BaseSelect
+                    :options="sexOption"
+                    v-model="querys.sex"
+                    label="Sex"
+                  />
+                  <br />
                   <BaseInput
                     v-model="querys.weight"
                     type="text"
@@ -87,6 +107,7 @@
       <div class="col in-container">
         <a>RESULTS</a>
         <div class="output">
+          <!-- {{ querys }} -->
           <div v-for="result in output" :key="result.score">
             <a
               style="text-decoration: none; color: darkslategray"
@@ -128,23 +149,21 @@ export default {
         weight: '',
         height: '',
         sex: '',
-        symtoms: '',
+        symtoms: ['', ''],
         castration: '',
         occurringAllergies: '',
         occurringDisease: ''
       },
       petTypes: ['dog', 'cat'],
+      ageOption: ['< a year', '1-5 years', '6-10 years', '> 10 years'],
       sexOption: ['male', 'female', 'unknown'],
-      symtomsOption: [
-        'vomiting',
-        'aggression',
-        'anxiety',
-        'food guarding',
+      MainSymtomsOption: ['vomiting', 'aggression', 'anxiety', 'food guarding'],
+      SubSymtomsOption: [
+        'lethargy',
         'coughing',
         'labored breathing',
-        'lethargy',
         'fever',
-        'licking, biting and chewing at the bite site',
+        'biting the bite site',
         'skin lesions'
       ],
       booleanOption: ['yes', 'no'],
@@ -152,9 +171,18 @@ export default {
     }
   },
   methods: {
+    createQuery() {
+      let query = this.querys.symtoms[0] + '202'
+      if (this.querys.symtoms[1] != '') {
+        query += this.querys.symtoms[1] + '202' + this.querys.petType
+      } else {
+        query += this.querys.petType
+      }
+      return query
+    },
     diagnosis() {
       this.output = null
-      let query = this.querys.symtoms + ' ' + this.querys.petType
+      let query = this.createQuery()
       DiagnosisService.diagnosisSearch(query)
         .then((response) => {
           this.output = response.data.results
