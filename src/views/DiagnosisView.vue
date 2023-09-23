@@ -33,7 +33,6 @@
             label="More Symtoms?"
             v-if="querys.symtoms[0] != ''"
           />
-          <br />
           <div class="wrap-collabsible">
             <input id="collapsible" class="toggle" type="checkbox" />
             <label for="collapsible" class="lbl-toggle">Additional Info</label>

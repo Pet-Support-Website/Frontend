@@ -56,7 +56,7 @@ export default {
   cursor: pointer;
   border: 1px solid rgb(175, 174, 174);
   border-radius: 5px;
-  margin: 5px;
+  margin: 3px;
   vertical-align: top;
   display: inline-block;
 }
