@@ -18,7 +18,7 @@
           >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/"
+          <router-link class="nav-link" to="/location-system"
             >Vet Hospitals & Clinics Near You</router-link
           >
         </li>

@@ -6,7 +6,10 @@
         <a style="color: #1fdda4">DIAGNOSIS</a>
       </h1>
       <p style="margin-top: 15px">
-        An explanation on what is the Diagnosis system and how it works.
+        The diagnosis system uses Page Rank Algorithm with Solr to search and
+        filter possible disease and illnesses based on the user's input. The
+        system will also ask follow-up questions to further filter down the
+        results, for more clarity.
       </p>
     </div>
     <div class="row" style="margin-bottom: 50px">
