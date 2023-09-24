@@ -19,14 +19,21 @@
           />
           <br />
           <BaseSelect
-            :options="MainSymtomsOption"
+            :options="SymtomsOption1"
             v-model="querys.symtoms[0]"
             label="Symptoms & behaviors"
           />
           <br />
           <BaseSelect
-            :options="SubSymtomsOption"
+            :options="SymtomsOption2"
             v-model="querys.symtoms[1]"
+            label="More Symtoms?"
+            v-if="querys.symtoms[0] != ''"
+          />
+          <br />
+          <BaseSelect
+            :options="SymtomsOption3"
+            v-model="querys.symtoms[2]"
             label="More Symtoms?"
             v-if="querys.symtoms[0] != ''"
           />
@@ -110,6 +117,10 @@
           <!-- {{ querys }} -->
           <div v-for="result in output" :key="result.score">
             <a
+              v-if="
+                result.title.toLowerCase().includes(this.querys.petType) ||
+                result.title.toLowerCase().includes(this.synonyms())
+              "
               style="text-decoration: none; color: darkslategray"
               :href="result.url"
               ><div class="diagnose-card">
@@ -149,7 +160,7 @@ export default {
         weight: '',
         height: '',
         sex: '',
-        symtoms: ['', ''],
+        symtoms: ['', '', ''],
         castration: '',
         occurringAllergies: '',
         occurringDisease: ''
@@ -157,14 +168,14 @@ export default {
       petTypes: ['dog', 'cat'],
       ageOption: ['< a year', '1-5 years', '6-10 years', '> 10 years'],
       sexOption: ['male', 'female', 'unknown'],
-      MainSymtomsOption: ['vomiting', 'aggression', 'anxiety', 'food guarding'],
-      SubSymtomsOption: [
-        'lethargy',
+      SymtomsOption1: ['biting', 'aggression', 'skin lesions', 'anxiety'],
+      SymtomsOption2: ['infections', 'vomiting', 'infections', 'lethargy'],
+      SymtomsOption3: [
         'coughing',
-        'labored breathing',
+        'dehydration',
         'fever',
-        'biting the bite site',
-        'skin lesions'
+        'diarrhea',
+        'weight loss'
       ],
       booleanOption: ['yes', 'no'],
       output: null
@@ -174,30 +185,43 @@ export default {
     createQuery() {
       let query = this.querys.symtoms[0] + '202'
       if (this.querys.symtoms[1] != '') {
-        query += this.querys.symtoms[1] + '202' + this.querys.petType
-      } else {
-        query += this.querys.petType
+        query += this.querys.symtoms[1] + '202'
       }
+      if (this.querys.symtoms[2] != '') {
+        query += this.querys.symtoms[2] + '202'
+      }
+      query += this.querys.petType
       return query
+    },
+    synonyms() {
+      if (this.querys.petType === 'cat') {
+        return 'feline'
+      } else if (this.querys.petType === 'dog') {
+        return 'kennel'
+      }
     },
     diagnosis() {
       this.output = null
-      let query = this.createQuery()
-      DiagnosisService.diagnosisSearch(query)
-        .then((response) => {
-          this.output = response.data.results
-          console.log(this.output)
-        })
-        .catch((error) => {
-          if (error.response && error.response.start == 404) {
-            return {
-              name: 'Network Error',
-              params: { resource: 'tag' }
+      if (this.querys.petType != '' && this.querys.symtoms[0] != '') {
+        let query = this.createQuery()
+        DiagnosisService.diagnosisSearch(query)
+          .then((response) => {
+            this.output = response.data.results
+            console.log(this.output)
+          })
+          .catch((error) => {
+            if (error.response && error.response.start == 404) {
+              return {
+                name: 'Network Error',
+                params: { resource: 'tag' }
+              }
+            } else {
+              return { name: 'NetworkError' }
             }
-          } else {
-            return { name: 'NetworkError' }
-          }
-        })
+          })
+      } else {
+        alert('please fill all required field')
+      }
     }
   }
 }
