@@ -9,6 +9,7 @@ import NetWorkErrorView from '@/views/NetworkErrorView.vue'
 import CardLayoutView from '@/views/Pets/CardLayoutView.vue'
 import ArticleDetailsView from '@/views/Pets/ArticleDetailsView.vue'
 import DiagnosisView from '@/views/DiagnosisView.vue'
+import LocationView from '@/views/LocationView.vue'
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: '/diagnosis-system',
     name: 'diagnosis system',
     component: DiagnosisView
+  },
+  {
+    path: '/location-system',
+    name: 'location system',
+    component: LocationView
   },
   {
     path: '/:articleFilter',
@@ -103,7 +109,6 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to)
   let documentTitle = `${to.name}`
   if (to.params.articleFilter) {
     documentTitle = `general ${to.params.articleFilter} care`
