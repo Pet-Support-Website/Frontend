@@ -158,7 +158,7 @@ export default {
           })
           google.maps.event.addListener(marker, 'click', () => {
             infowindow.setContent(
-              `<div class="ui header">${place.name}</div><p>${place.vicinity}</p>`
+              `<div style="font-weight: bold">${place.name}</div><p>${place.vicinity}</p>`
             )
             infowindow.open(map, marker)
           })
@@ -192,6 +192,10 @@ export default {
   min-height: 700px;
   flex-direction: column;
   padding: 20px 40px 35px;
+  background-image: url('../assets/clinic-system.png');
+  background-size: 40rem;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .about-btn {
