@@ -65,12 +65,6 @@
             </div>
           </div>
         </div>
-
-        <div class="row">
-          <div style="text-align: center; margin-top: 70px">
-            <h4>**Product construction undergoing Progress I.</h4>
-          </div>
-        </div>
       </div>
     </div>
   </section>

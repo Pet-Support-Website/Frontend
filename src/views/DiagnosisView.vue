@@ -14,105 +14,118 @@
     </div>
     <div class="row" style="margin-bottom: 50px">
       <div class="col">
-        <form class="input-container" @submit.prevent="diagnosis">
-          <BaseSelect
-            :options="petTypes"
-            v-model="querys.petType"
-            label="Type of your pet"
-          />
-          <br />
-          <BaseSelect
-            :options="SymtomsOption1"
-            v-model="querys.symtoms[0]"
-            label="Symptoms & behaviors"
-          />
-          <br />
-          <BaseSelect
-            :options="SymtomsOption2"
-            v-model="querys.symtoms[1]"
-            label="More Symtoms?"
-            v-if="querys.symtoms[0] != ''"
-          />
-          <br />
-          <BaseSelect
-            :options="SymtomsOption3"
-            v-model="querys.symtoms[2]"
-            label="More Symtoms?"
-            v-if="querys.symtoms[0] != ''"
-          />
-          <br />
-          <div class="wrap-collabsible">
-            <input id="collapsible" class="toggle" type="checkbox" />
-            <label for="collapsible" class="lbl-toggle">Additional Info</label>
-            <div class="collapsible-content">
-              <div class="content-inner">
-                <div
-                  style="
-                    display: flex;
-                    flex-direction: column;
-                    padding-bottom: 35px;
-                  "
-                >
-                  <BaseInput
-                    v-model="querys.species"
-                    type="text"
-                    label="Species"
-                  />
-                  <br />
-                  <BaseSelect
-                    :options="ageOption"
-                    v-model="querys.age"
-                    type="text"
-                    label="Age"
-                  />
-                  <br />
-                  <BaseSelect
-                    :options="sexOption"
-                    v-model="querys.sex"
-                    label="Sex"
-                  />
-                  <br />
-                  <BaseInput
-                    v-model="querys.weight"
-                    type="text"
-                    label="Weight"
-                    optional="true"
-                  />
-                  <br />
-                  <BaseInput
-                    v-model="querys.height"
-                    type="text"
-                    label="Height"
-                    optional="true"
-                  />
-                  <br />
-                  <BaseSelect
-                    :options="booleanOption"
-                    v-model="querys.castration"
-                    label="Castration & Neutering status"
-                    optional="true"
-                  />
-                  <br />
-                  <BaseInput
-                    v-model="querys.occurringAllergies"
-                    type="text"
-                    label=" Occurring Allergies"
-                    optional="true"
-                  />
-                  <br />
-                  <BaseInput
-                    v-model="querys.occurringDisease"
-                    type="text"
-                    label="Occurring disease and conditions"
-                    optional="true"
-                  />
+        <div>
+          <form class="input-container" @submit.prevent="diagnosis">
+            <BaseSelect
+              :options="petTypes"
+              v-model="querys.petType"
+              label="Type of your pet"
+            />
+            <br />
+            <BaseSelect
+              :options="SymtomsOption1"
+              v-model="querys.symtoms[0]"
+              label="Symptoms & behaviors"
+            />
+            <br />
+            <BaseSelect
+              :options="SymtomsOption2"
+              v-model="querys.symtoms[1]"
+              label="More Symtoms?"
+              v-if="querys.symtoms[0] != ''"
+            />
+            <br />
+            <BaseSelect
+              :options="SymtomsOption3"
+              v-model="querys.symtoms[2]"
+              label="More Symtoms?"
+              v-if="querys.symtoms[0] != ''"
+            />
+            <br />
+            <div class="wrap-collabsible">
+              <input id="collapsible" class="toggle" type="checkbox" />
+              <label for="collapsible" class="lbl-toggle"
+                >Additional Info</label
+              >
+              <div class="collapsible-content">
+                <div class="content-inner">
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      padding-bottom: 35px;
+                    "
+                  >
+                    <BaseInput
+                      v-model="querys.species"
+                      type="text"
+                      label="Species"
+                    />
+                    <br />
+                    <BaseSelect
+                      :options="ageOption"
+                      v-model="querys.age"
+                      type="text"
+                      label="Age"
+                    />
+                    <br />
+                    <BaseSelect
+                      :options="sexOption"
+                      v-model="querys.sex"
+                      label="Sex"
+                    />
+                    <br />
+                    <BaseInput
+                      v-model="querys.weight"
+                      type="text"
+                      label="Weight"
+                      optional="true"
+                    />
+                    <br />
+                    <BaseInput
+                      v-model="querys.height"
+                      type="text"
+                      label="Height"
+                      optional="true"
+                    />
+                    <br />
+                    <BaseSelect
+                      :options="booleanOption"
+                      v-model="querys.castration"
+                      label="Castration & Neutering status"
+                      optional="true"
+                    />
+                    <br />
+                    <BaseInput
+                      v-model="querys.occurringAllergies"
+                      type="text"
+                      label=" Occurring Allergies"
+                      optional="true"
+                    />
+                    <br />
+                    <BaseInput
+                      v-model="querys.occurringDisease"
+                      type="text"
+                      label="Occurring disease and conditions"
+                      optional="true"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <br />
-          <input class="about-btn" type="submit" value="Submit" />
-        </form>
+            <br />
+            <div class="row">
+              <div class="col">
+                <input class="about-btn" type="submit" value="Submit" />
+              </div>
+            </div>
+          </form>
+          <form @submit.prevent="clear">
+            <div class="col-4" style="align-content: end">
+              <button class="about-2btn" type="submit">Clear</button>
+            </div>
+          </form>
+        </div>
       </div>
       <div class="col in-container">
         <a>RESULTS</a>
@@ -225,6 +238,21 @@ export default {
       } else {
         alert('please fill all required field')
       }
+    },
+    clear() {
+      this.querys = {
+        petType: '',
+        species: '',
+        age: '',
+        weight: '',
+        height: '',
+        sex: '',
+        symtoms: ['', '', ''],
+        castration: '',
+        occurringAllergies: '',
+        occurringDisease: ''
+      }
+      this.output = null
     }
   }
 }
@@ -254,9 +282,24 @@ export default {
   color: white;
   background-color: #1fdda4;
   padding: 10px 50px;
+  width: 100%;
   font-size: 18px;
   border: none;
   border-radius: 5px;
+}
+
+.about-2btn {
+  margin-top: 10px;
+  color: darkslategray;
+  background-color: lightgray;
+  padding: 10px 50px;
+  width: 100%;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+}
+.about-2btn:hover {
+  background-color: gray;
 }
 
 .about-btn:hover {
