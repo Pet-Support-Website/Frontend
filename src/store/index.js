@@ -3,7 +3,7 @@ export default reactive({
   flashMessage: '',
   article: [],
   articles: [],
-  tags: [],
+  tags: null,
   searchArticles: [],
   user: null
 })

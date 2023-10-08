@@ -9,5 +9,17 @@ export default {
   },
   getArticlesByTag(tag) {
     return apiClient.get('/article/' + tag)
+  },
+  saveArticle(article) {
+    return apiClient.post('article', article)
+  },
+  uploadFile(file) {
+    let formData = new FormData()
+    formData.append('file', file)
+    return apiClient.post('/uploadFile', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
   }
 }

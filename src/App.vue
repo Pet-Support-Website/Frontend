@@ -23,7 +23,7 @@
           >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/"
+          <router-link class="nav-link" to="/login"
             ><button class="login-btn">Log in</button></router-link
           >
         </li>

@@ -10,6 +10,8 @@ import CardLayoutView from '@/views/Pets/CardLayoutView.vue'
 import ArticleDetailsView from '@/views/Pets/ArticleDetailsView.vue'
 import DiagnosisView from '@/views/DiagnosisView.vue'
 import LocationView from '@/views/LocationView.vue'
+import Login from '@/views/LoginView.vue'
+import AddArticle from '@/views/AddArticleView.vue'
 
 const routes = [
   {
@@ -31,6 +33,27 @@ const routes = [
     path: '/location-system',
     name: 'location system',
     component: LocationView
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/add-article',
+    name: 'AddArticle',
+    component: AddArticle,
+    beforeEnter: () => {
+      return TagService.getTags()
+        .then((response) => {
+          GStore.tags = response.data
+          console.log(GStore.tags)
+        })
+        .catch(() => {
+          GStore.tags = null
+          console.log('cannot load tags')
+        })
+    }
   },
   {
     path: '/:articleFilter',
