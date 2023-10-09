@@ -1,34 +1,60 @@
 <template>
-  <div class="col-md-12">
+  <div class="container">
+    <div class="header">
+      <h1 style="color: darkslategray">
+        ADMINISTRATOR
+        <a style="color: #1fdda4">LOGIN</a>
+      </h1>
+      <p style="margin-top: 15px">
+        Data management system for Administrators only.
+      </p>
+    </div>
     <div class="card card-container">
-      <img
-        id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        class="profile-img-card"
-      />
-      <Form @submit="handleLogin" :validation-schema="schema">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <Field name="username" type="text" class="form-control" />
-          <ErrorMessage name="username" class="error-feedback" />
+      <div class="row">
+        <div
+          class="col-5"
+          style="
+            border-right: lightgray 1px solid;
+            border-radius: 5px;
+            padding: 10px 50px;
+          "
+        >
+          <img
+            id="profile-img"
+            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            class="profile-img-card"
+          />
+          <Form @submit="handleLogin" :validation-schema="schema">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <Field name="username" type="text" class="form-control" />
+              <ErrorMessage name="username" class="error-feedback" />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <Field name="password" type="password" class="form-control" />
+              <ErrorMessage name="password" class="error-feedback" />
+            </div>
+            <div class="form-group">
+              <button class="login-btn" :disabled="loading">
+                <span
+                  v-show="loading"
+                  class="spinner-border spinner-border-sm"
+                />
+                <span>Login</span>
+              </button>
+            </div>
+            <div class="form-group">
+              <div v-if="message" class="alert alert-danger" role="alert">
+                {{ massage }}
+              </div>
+            </div>
+          </Form>
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <Field name="password" type="password" class="form-control" />
-          <ErrorMessage name="password" class="error-feedback" />
+        <div class="col-7">
+          <img class="image" src="@/assets/infographic1.png" />
         </div>
-        <div class="form-group">
-          <button class="btn btn-primary btn-block" :disabled="loading">
-            <span v-show="loading" class="spinner-border spinner-border-sm" />
-            <span>Login</span>
-          </button>
-        </div>
-        <div class="form-group">
-          <div v-if="message" class="alert alert-danger" role="alert">
-            {{ massage }}
-          </div>
-        </div>
-      </Form>
+      </div>
     </div>
   </div>
 </template>
@@ -68,25 +94,31 @@ export default {
 }
 </script>
 <style scoped>
+.header {
+  margin-top: 50px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+}
+
 label {
   display: block;
   margin-top: 10px;
 }
 .card-container.card {
-  max-width: 350px !important;
-  padding: 40px 40px;
+  max-width: 100%;
 }
 .card {
-  background-color: #f7f7f7;
-  padding: 20px 25px 30px;
-  margin: 0 auto 25px;
-  margin-top: 50px;
+  background-color: white;
+  width: 100%;
+  padding: 30px 10px;
+  margin: 0 auto;
+  margin-bottom: 50px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
-  border-radius: 2px;
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
 }
 .profile-img-card {
   width: 96px;
@@ -97,7 +129,29 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+.image {
+  display: block;
+  margin-left: 20px;
+  margin-right: auto;
+  margin-top: 30px;
+  height: 38vh;
+  width: auto;
+}
 .error-feedback {
   color: red;
+}
+
+.login-btn {
+  margin-top: 20px;
+  color: white;
+  background-color: #1fdda4;
+  padding: 10px 50px;
+  width: 100%;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+}
+.login-btn:hover {
+  background-color: #1bbf8c;
 }
 </style>
