@@ -11,7 +11,7 @@ export default {
     return apiClient.get('/article/' + tag)
   },
   saveArticle(article) {
-    return apiClient.post('article', article)
+    return apiClient.post('/addArticle', article)
   },
   uploadFile(file) {
     let formData = new FormData()
@@ -21,5 +21,8 @@ export default {
         'Content-Type': 'multipart/form-data'
       }
     })
+  },
+  deleteArticle(article) {
+    return apiClient.post('/deleteArticle', article)
   }
 }
