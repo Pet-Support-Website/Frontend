@@ -12,6 +12,7 @@ import DiagnosisView from '@/views/DiagnosisView.vue'
 import LocationView from '@/views/LocationView.vue'
 import Login from '@/views/LoginView.vue'
 import AddArticle from '@/views/AddArticleView.vue'
+import AllArticlesView from '@/views/AllArticlesView.vue'
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/all-articles',
+    name: 'all-article',
+    component: AllArticlesView
   },
   {
     path: '/add-article',

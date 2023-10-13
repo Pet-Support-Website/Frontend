@@ -24,7 +24,7 @@
         </li>
         <li class="nav-item">
           <router-link class="nav-link" to="/login"
-            ><button class="login-btn">Log in</button></router-link
+            ><button class="login-btn">Log out</button></router-link
           >
         </li>
       </ul>

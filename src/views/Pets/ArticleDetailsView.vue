@@ -5,7 +5,15 @@
     </div>
     <div id="Details">
       <div class="container">
-        <h1 style="text-transform: uppercase">{{ article.title }}</h1>
+        <div class="row">
+          <div class="col-5">
+            <h1 style="text-transform: uppercase">{{ article.title }}</h1>
+          </div>
+          <div class="col" style="margin-top: 25px">
+            <button class="admin-button" style="margin-right: 5px">-</button>
+            <button class="edit-button">Edit</button>
+          </div>
+        </div>
         <p style="font-weight: bold">{{ article.source }}</p>
         <div>
           <p style="font-weight: bold">
@@ -56,7 +64,24 @@ span {
   line-height: 3;
   color: darkslategray;
 }
-
+.admin-button {
+  border: 1px solid rgb(251, 75, 75);
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: rgb(255, 100, 100);
+  color: white;
+  font-size: 18px;
+}
+.edit-button {
+  border: 1px solid #1bbf8c;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: #1fdda4;
+  color: white;
+  font-size: 18px;
+}
 .article-img {
   margin-top: 20px;
   width: 100%;

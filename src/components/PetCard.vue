@@ -8,6 +8,9 @@
     }"
   >
     <div class="pet-card">
+      <div style="text-align: right">
+        <button class="admin-button">-</button>
+      </div>
       <div v-if="article.imgUrl !== ''">
         <img class="article-img" :src="article.imgUrl" />
       </div>
@@ -49,7 +52,9 @@ export default {
 }
 
 .pet-card {
-  padding: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   text-align: left;
   width: 300px;
   height: 300px;
@@ -59,6 +64,14 @@ export default {
   margin: 3px;
   vertical-align: top;
   display: inline-block;
+}
+.admin-button {
+  border: 1px solid rgb(255, 100, 100);
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: rgb(255, 100, 100);
+  color: white;
 }
 
 h4 {

@@ -6,7 +6,7 @@
         <a style="color: #1fdda4">CLINICS & HOSPITALS</a>
       </h1>
       <p style="margin-top: 15px">
-        An explanation on what is the location system and how it works.
+        Find vet clinics and hospitals near you. **Location Reveal is required.
       </p>
     </div>
     <div class="row" style="margin-bottom: 50px">

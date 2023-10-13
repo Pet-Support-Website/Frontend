@@ -31,14 +31,14 @@
             <BaseSelect
               :options="SymtomsOption2"
               v-model="querys.symtoms[1]"
-              label="More Symtoms?"
+              label="More Symptoms?"
               v-if="querys.symtoms[0] != ''"
             />
             <br />
             <BaseSelect
               :options="SymtomsOption3"
               v-model="querys.symtoms[2]"
-              label="More Symtoms?"
+              label="More Symptoms?"
               v-if="querys.symtoms[0] != ''"
             />
             <br />
@@ -115,14 +115,14 @@
             </div>
             <br />
             <div class="row">
-              <div class="col">
+              <div class="col-9">
                 <input class="about-btn" type="submit" value="Submit" />
               </div>
-            </div>
-          </form>
-          <form @submit.prevent="clear">
-            <div class="col-4" style="align-content: end">
-              <button class="about-2btn" type="submit">Clear</button>
+              <div class="col-3">
+                <form @submit.prevent="clear">
+                  <button class="about-2btn" type="submit">Clear</button>
+                </form>
+              </div>
             </div>
           </form>
         </div>
@@ -292,7 +292,7 @@ export default {
   margin-top: 10px;
   color: darkslategray;
   background-color: lightgray;
-  padding: 10px 50px;
+  padding: 10px 15px;
   width: 100%;
   font-size: 18px;
   border: none;

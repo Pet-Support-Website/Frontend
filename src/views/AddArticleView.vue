@@ -1,36 +1,64 @@
 <template>
-  <div>
-    <h1>Create an article</h1>
-    <form @submit.prevent="saveArticle">
-      <BaseInput
-        v-model="article.title"
-        type="text"
-        label="Title"
-        class="field"
-      />
-      <BaseInput v-model="article.source" type="text" label="Source" />
-
-      <BaseInput v-model="article.content" type="text" label="Content" />
-
-      <BaseSelectID
-        :options="tagsOption1"
-        v-model="article.tags[0].id"
-        label="Select a pet type tag"
-      />
-      <BaseSelectID
-        :options="tagsOption2"
-        v-model="article.tags[1].id"
-        label="Select a main catagory tag"
-      />
-      <BaseSelectID
-        :options="tagsOption3"
-        v-model="article.tags[2].id"
-        label="Select a other tag"
-      />
-      <h3>The image of the Article</h3>
-      <UploadImages @changed="handleImages" />
-
-      <button type="submit">Submit</button>
+  <div class="container">
+    <div class="header">
+      <h1 style="color: darkslategray">
+        ADD
+        <a style="color: #1fdda4">ARTICLE</a>
+      </h1>
+      <p style="margin-top: 15px">
+        Fill in all the necessary contents to add article.
+      </p>
+    </div>
+    <form
+      @submit.prevent="saveArticle"
+      style="padding-left: 10px; padding-right: 10px"
+    >
+      <div class="row">
+        <div
+          class="col in-container"
+          style="
+            margin-right: 10px;
+            background-color: rgba(255, 246, 246, 0.945);
+          "
+        >
+          <BaseInput
+            v-model="article.title"
+            type="text"
+            label="Title"
+            class="field"
+          />
+          <br />
+          <BaseInput v-model="article.source" type="text" label="Source" />
+          <br />
+          <BaseInput v-model="article.content" type="text" label="Content" />
+          <br />
+          <BaseSelectID
+            :options="tagsOption1"
+            v-model="article.tags[0].id"
+            label="Select a pet type tag"
+          />
+          <br />
+          <BaseSelectID
+            :options="tagsOption2"
+            v-model="article.tags[1].id"
+            label="Select a main catagory tag"
+          />
+          <br />
+          <BaseSelectID
+            :options="tagsOption3"
+            v-model="article.tags[2].id"
+            label="Select a other tag"
+          />
+          <br />
+        </div>
+        <div class="col in-container" style="margin-left: 10px">
+          <label>THE IMAGE OF ARTICLE</label>
+          <UploadImages class="UploadImages" @changed="handleImages" />
+        </div>
+      </div>
+      <div class="row" style="margin-top: 10px">
+        <button class="about-btn" type="submit">Submit</button>
+      </div>
     </form>
 
     <pre>{{ article }}</pre>
@@ -124,4 +152,29 @@ export default {
   }
 }
 </script>
-<style scoped></style>
+<style scoped>
+.header {
+  margin-top: 50px;
+}
+.in-container {
+  border-radius: 5px;
+  border: 1px lightgray solid;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px 35px;
+}
+.UploadImages {
+  max-height: 100px;
+}
+.about-btn {
+  margin-top: 10px;
+  color: white;
+  background-color: #1fdda4;
+  padding: 10px 50px;
+  width: 100%;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+}
+</style>
