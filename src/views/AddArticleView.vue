@@ -54,8 +54,7 @@
             v-model="article.tags[2].id"
             label="Select a other tag"
           />
-          <br />
-          <div class="row" style="margin-top: 10px">
+          <div style="margin-top: 10px">
             <button class="about-btn" type="submit" @click="scrollToTop">
               Submit
             </button>

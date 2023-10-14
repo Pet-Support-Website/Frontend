@@ -34,8 +34,8 @@
     :id="this.article.id"
     :rounterindex="0"
   >
-    <h2>Warning</h2>
-    <p>Are you sure to delete "{{ this.article.title }}"</p>
+    <h1 style="font-size: 30px; color: rgb(255, 51, 51)">WARNING</h1>
+    <p>Are you sure you want to delete "{{ this.article.title }}"?</p>
   </ConfirmPopupVue>
 </template>
 
@@ -109,6 +109,9 @@ export default {
   margin-bottom: 5px;
   background-color: rgb(255, 100, 100);
   color: white;
+}
+.admin-button:hover {
+  background-color: rgb(255, 51, 51);
 }
 
 h4 {

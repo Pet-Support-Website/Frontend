@@ -10,6 +10,14 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
+          <router-link class="nav-link" to="/">Home</router-link>
+        </li>
+        <li class="nav-item" v-if="$store.state.loggedIn === true">
+          <router-link class="nav-link" to="/all-articles"
+            >All Articles</router-link
+          >
+        </li>
+        <li class="nav-item">
           <router-link
             class="nav-link"
             to="/add-article"
@@ -17,24 +25,12 @@
             >Add Article</router-link
           >
         </li>
-        <li
-          class="nav-item"
-          style="margin-right: 200px"
-          v-if="$store.state.loggedIn === true"
-        >
-          <router-link class="nav-link" to="/all-articles"
-            >All article</router-link
-          >
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/">Home</router-link>
-        </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="$store.state.loggedIn != true">
           <router-link class="nav-link" to="/diagnosis-system"
             >Diagnosis System</router-link
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="$store.state.loggedIn != true">
           <router-link class="nav-link" to="/location-system"
             >Vet Hospitals & Clinics Near You</router-link
           >
@@ -42,7 +38,7 @@
         <li class="nav-item" v-if="$store.state.loggedIn === true">
           <router-link class="nav-link" to="/login"
             ><button class="login-btn" @click="this.$store.dispatch('logout')">
-              Log out
+              Admin - Log out
             </button></router-link
           >
         </li>
@@ -95,6 +91,7 @@ export default {
   font-weight: bold;
   padding: 0px 30px;
   font-size: 18px;
+  align-self: center;
   border: 1px solid #1fdda4;
   border-radius: 5px;
 }

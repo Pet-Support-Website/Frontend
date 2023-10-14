@@ -1,10 +1,11 @@
 <template>
   <section>
-    <div id="layout">
+    <div class="header" id="layout">
       <div class="row d-flex justify-content-center" style="margin: 0">
         <div class="col-md-10">
-          <h1 style="text-transform: uppercase; color: #1fdda4">
-            <a style="color: darkslategray">VIEW ALL ARTICLES</a>
+          <h1 style="text-transform: uppercase; color: darkslategray">
+            VIEW ALL
+            <a style="color: #1fdda4"> ARTICLES</a>
           </h1>
           <PetCard
             v-for="article in articles"
@@ -34,4 +35,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.header {
+  margin-top: 50px;
+}
+</style>

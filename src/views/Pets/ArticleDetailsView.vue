@@ -9,7 +9,10 @@
           <div class="col-12">
             <h1 style="text-transform: uppercase">{{ article.title }}</h1>
           </div>
-          <div style="margin: 25px" v-if="$store.state.loggedIn === true">
+          <div
+            style="margin-bottom: 15px"
+            v-if="$store.state.loggedIn === true"
+          >
             <button
               class="admin-button"
               style="width: 40px; margin-right: 5px"
@@ -46,8 +49,8 @@
       :id="this.article.id"
       :rounterindex="-1"
     >
-      <h2>Warning</h2>
-      <p>Are you sure to delete "{{ this.article.title }}"</p>
+      <h1 style="font-size: 30px; color: rgb(255, 51, 51)">WARNING</h1>
+      <p>Are you sure you want to delete "{{ this.article.title }}"?</p>
     </ConfirmPopup>
   </section>
 </template>
@@ -107,6 +110,9 @@ span {
   color: white;
   font-size: 18px;
 }
+.admin-button:hover {
+  background-color: rgb(255, 51, 51);
+}
 .edit-button {
   border: 1px solid #1bbf8c;
   border-radius: 5px;
@@ -115,6 +121,9 @@ span {
   background-color: #1fdda4;
   color: white;
   font-size: 18px;
+}
+.edit-button:hover {
+  background-color: #1bbf8c;
 }
 .article-img {
   margin-top: 20px;
