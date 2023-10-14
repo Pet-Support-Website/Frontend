@@ -6,11 +6,13 @@
     <div id="Details">
       <div class="container">
         <div class="row">
-          <div class="col-5">
+          <div class="col-12">
             <h1 style="text-transform: uppercase">{{ article.title }}</h1>
           </div>
-          <div class="col" style="margin-top: 25px">
-            <button class="admin-button" style="margin-right: 5px">-</button>
+          <div style="margin: 25px">
+            <button class="admin-button" style="width: 40px; margin-right: 5px">
+              -
+            </button>
             <button class="edit-button">Edit</button>
           </div>
         </div>

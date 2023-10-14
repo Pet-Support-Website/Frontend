@@ -9,7 +9,7 @@
   >
     <div class="pet-card">
       <div style="text-align: right">
-        <button class="admin-button">-</button>
+        <button style="width: 40px" class="admin-button">-</button>
       </div>
       <div v-if="article.imgUrl !== ''">
         <img class="article-img" :src="article.imgUrl" />

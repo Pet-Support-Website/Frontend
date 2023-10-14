@@ -30,7 +30,12 @@
           <br />
           <BaseInput v-model="article.source" type="text" label="Source" />
           <br />
-          <BaseInput v-model="article.content" type="text" label="Content" />
+          <BaseTextArea
+            v-model="article.content"
+            type="text"
+            label="Content"
+            style="height: 200px"
+          />
           <br />
           <BaseSelectID
             :options="tagsOption1"
@@ -50,18 +55,18 @@
             label="Select a other tag"
           />
           <br />
+          <div class="row" style="margin-top: 10px">
+            <button class="about-btn" type="submit">Submit</button>
+          </div>
         </div>
         <div class="col in-container" style="margin-left: 10px">
           <label>THE IMAGE OF ARTICLE</label>
           <UploadImages class="UploadImages" @changed="handleImages" />
         </div>
       </div>
-      <div class="row" style="margin-top: 10px">
-        <button class="about-btn" type="submit">Submit</button>
-      </div>
     </form>
-
-    <pre>{{ article }}</pre>
+    <div class="row" style="height: 25px"></div>
+    <!-- <pre>{{ article }}</pre> -->
   </div>
 </template>
 
@@ -71,12 +76,14 @@ import UploadImages from 'vue-upload-drop-images'
 import GStore from '@/store'
 import BaseInput from '@/components/BaseInput.vue'
 import BaseSelectID from '@/components/BaseSelectID.vue'
+import BaseTextArea from '@/components/BaseTextArea.vue'
 export default {
   inject: ['GStore'],
   components: {
     UploadImages,
     BaseInput,
-    BaseSelectID
+    BaseSelectID,
+    BaseTextArea
   },
   data() {
     return {
@@ -112,25 +119,30 @@ export default {
         this.files.map((file) => {
           return ArticleService.uploadFile(file)
         })
-      ).then((response) => {
-        let imgUrls = response.map((r) => r.data)
-        this.article.imgUrl = imgUrls[0]
-        ArticleService.saveArticle(this.article).then((response) => {
-          console.log(response)
-          this.$router
-            .push({
+      )
+        .then((response) => {
+          let imgUrls = response.map((r) => r.data)
+          this.article.imgUrl = imgUrls[0]
+          ArticleService.saveArticle(this.article).then((response) => {
+            console.log(response)
+            this.$router.push({
               name: 'ArticleDetailsView',
               params: { id: response.data.id }
             })
-            .catch(() => {
-              this.$router.push('NetworkError')
-            })
+            this.GStore.flashMessage =
+              'You are successfully add a new event for ' + response.data.title
+            setTimeout(() => {
+              this.GStore.flashMessage = ''
+            }, 3000)
+          })
         })
-      })
-    },
-    handleImages(files) {
-      this.files = files
+        .catch(() => {
+          this.$router.push('NetworkError')
+        })
     }
+  },
+  handleImages(files) {
+    this.files = files
   },
   computed: {
     tagsOption3() {

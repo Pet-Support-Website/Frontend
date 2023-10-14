@@ -1,4 +1,7 @@
 <template>
+  <div id="flashMessage" v-if="GStore.flashMessage">
+    {{ GStore.flashMessage }}
+  </div>
   <!--Navigation Bar.-->
   <nav
     class="navbar navbar-expand-lg navbar-light justify-content-between"
@@ -40,6 +43,7 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import FooterView from '@/components/Footer.vue'
 export default {
+  inject: ['GStore'],
   components: { FontAwesomeIcon, FooterView }
 }
 </script>
@@ -53,6 +57,12 @@ export default {
   color: darkslategray;
   margin: 0;
   padding: 0;
+}
+
+#flashMessage {
+  background-color: brown;
+  color: white;
+  text-align: center;
 }
 
 .login-btn {
