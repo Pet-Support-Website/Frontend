@@ -9,8 +9,12 @@
           <div class="col-12">
             <h1 style="text-transform: uppercase">{{ article.title }}</h1>
           </div>
-          <div style="margin: 25px">
-            <button class="admin-button" style="width: 40px; margin-right: 5px">
+          <div style="margin: 25px" v-if="$store.state.loggedIn === true">
+            <button
+              class="admin-button"
+              style="width: 40px; margin-right: 5px"
+              @click.prevent="TogglePopup('buttonTrigger')"
+            >
               -
             </button>
             <button class="edit-button">Edit</button>
@@ -36,16 +40,28 @@
         </div>
       </div>
     </div>
+    <ConfirmPopup
+      v-if="popupTriggers.buttonTrigger"
+      :TogglePopup="() => TogglePopup('buttonTrigger')"
+      :id="this.article.id"
+      :rounterindex="-1"
+    >
+      <h2>Warning</h2>
+      <p>Are you sure to delete "{{ this.article.title }}"</p>
+    </ConfirmPopup>
   </section>
 </template>
 
 <script>
 import GStore from '@/store'
+import { ref } from 'vue'
 import NavigationBar from '@/components/NavigationBar.vue'
+import ConfirmPopup from '@/components/ConfirmPopup.vue'
 export default {
   props: ['id'],
   components: {
-    NavigationBar
+    NavigationBar,
+    ConfirmPopup
   },
   data() {
     return {
@@ -55,6 +71,22 @@ export default {
   computed: {
     formattedText() {
       return this.article.content.replace(/%&07%/g, '<br>') // Replace &#10; with <br> tags
+    }
+  },
+  setup() {
+    const popupTriggers = ref({
+      buttonTrigger: false,
+      timedTrigger: false
+    })
+
+    const TogglePopup = (trigger) => {
+      popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+    }
+
+    return {
+      ConfirmPopup,
+      popupTriggers,
+      TogglePopup
     }
   }
 }

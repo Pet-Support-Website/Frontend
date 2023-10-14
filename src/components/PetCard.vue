@@ -8,8 +8,15 @@
     }"
   >
     <div class="pet-card">
-      <div style="text-align: right">
-        <button style="width: 40px" class="admin-button">-</button>
+      <div style="height: 40px" v-if="$store.state.loggedIn != true"></div>
+      <div style="text-align: right" v-if="$store.state.loggedIn === true">
+        <button
+          style="width: 40px"
+          class="admin-button"
+          @click.prevent="TogglePopup('buttonTrigger')"
+        >
+          -
+        </button>
       </div>
       <div v-if="article.imgUrl !== ''">
         <img class="article-img" :src="article.imgUrl" />
@@ -21,12 +28,26 @@
       <span>{{ article.source }}</span>
     </div>
   </router-link>
+  <ConfirmPopupVue
+    v-if="popupTriggers.buttonTrigger"
+    :TogglePopup="() => TogglePopup('buttonTrigger')"
+    :id="this.article.id"
+    :rounterindex="0"
+  >
+    <h2>Warning</h2>
+    <p>Are you sure to delete "{{ this.article.title }}"</p>
+  </ConfirmPopupVue>
 </template>
 
 <script>
-//import GStore from '@/store'
+import { ref } from 'vue'
+import ConfirmPopupVue from './ConfirmPopup.vue'
+
 export default {
   name: 'PetCard',
+  components: {
+    ConfirmPopupVue
+  },
   props: {
     article: {
       type: Object,
@@ -36,6 +57,22 @@ export default {
   methods: {
     scrollToTop() {
       window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    }
+  },
+  setup() {
+    const popupTriggers = ref({
+      buttonTrigger: false,
+      timedTrigger: false
+    })
+
+    const TogglePopup = (trigger) => {
+      popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+    }
+
+    return {
+      ConfirmPopupVue,
+      popupTriggers,
+      TogglePopup
     }
   }
 }

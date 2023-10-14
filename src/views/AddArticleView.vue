@@ -56,7 +56,9 @@
           />
           <br />
           <div class="row" style="margin-top: 10px">
-            <button class="about-btn" type="submit">Submit</button>
+            <button class="about-btn" type="submit" @click="scrollToTop">
+              Submit
+            </button>
           </div>
         </div>
         <div class="col in-container" style="margin-left: 10px">
@@ -139,6 +141,9 @@ export default {
         .catch(() => {
           this.$router.push('NetworkError')
         })
+    },
+    scrollToTop() {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
     }
   },
   handleImages(files) {

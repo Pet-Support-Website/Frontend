@@ -1,7 +1,4 @@
 <template>
-  <div id="flashMessage" v-if="GStore.flashMessage">
-    {{ GStore.flashMessage }}
-  </div>
   <!--Navigation Bar.-->
   <nav
     class="navbar navbar-expand-lg navbar-light justify-content-between"
@@ -12,6 +9,23 @@
     /></router-link>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <router-link
+            class="nav-link"
+            to="/add-article"
+            v-if="$store.state.loggedIn === true"
+            >Add Article</router-link
+          >
+        </li>
+        <li
+          class="nav-item"
+          style="margin-right: 200px"
+          v-if="$store.state.loggedIn === true"
+        >
+          <router-link class="nav-link" to="/all-articles"
+            >All article</router-link
+          >
+        </li>
         <li class="nav-item">
           <router-link class="nav-link" to="/">Home</router-link>
         </li>
@@ -25,9 +39,16 @@
             >Vet Hospitals & Clinics Near You</router-link
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="$store.state.loggedIn === true">
           <router-link class="nav-link" to="/login"
-            ><button class="login-btn">Log out</button></router-link
+            ><button class="login-btn" @click="this.$store.dispatch('logout')">
+              Log out
+            </button></router-link
+          >
+        </li>
+        <li class="nav-item" v-if="$store.state.loggedIn != true">
+          <router-link class="nav-link" to="/login"
+            ><button class="login-btn">Log In</button></router-link
           >
         </li>
       </ul>
@@ -35,6 +56,9 @@
     </div>
   </nav>
   <hr />
+  <div id="flashMessage" v-if="GStore.flashMessage">
+    {{ GStore.flashMessage }}
+  </div>
   <router-view />
   <FooterView />
 </template>

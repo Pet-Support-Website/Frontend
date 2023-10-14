@@ -8,7 +8,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import GStore from './store/index.js'
-// import store from './store/store.js'
+import store from './store/store.js'
 
 library.add(faUserSecret)
 config.styleDefault = 'solid'
@@ -16,6 +16,6 @@ config.styleDefault = 'solid'
 createApp(App)
   .provide('GStore', GStore)
   .use(router)
-  // .use(store)
+  .use(store)
   .component('font-awesome-icon', FontAwesomeIcon)
   .mount('#app')

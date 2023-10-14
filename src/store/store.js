@@ -12,13 +12,11 @@ export default createStore({
     users: [
       {
         username: 'kitti',
-        password: 'kitti',
-        favorites: []
+        password: 'kitti'
       },
       {
-        username: 'user',
-        password: '123',
-        favorites: []
+        username: 'admin',
+        password: 'password'
       }
     ],
     currentUser: null,
@@ -78,15 +76,6 @@ export default createStore({
     },
     setPasswordInput(state, input) {
       state.password = input
-    },
-    save(state) {
-      let selectedUser = state.users.find(
-        (user) => user.username === state.currentUser.username
-      )
-      if (selectedUser != null) {
-        selectedUser.favorites = state.currentUser.favorites
-      }
-      localStorage.setItem('state', state)
     }
   },
   getters: {},

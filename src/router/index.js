@@ -43,7 +43,20 @@ const routes = [
   {
     path: '/all-articles',
     name: 'all-article',
-    component: AllArticlesView
+    component: AllArticlesView,
+    props: true,
+    beforeEnter: () => {
+      return ArticleService.getArticles()
+        .then((response) => {
+          GStore.articles = response.data
+          console.log(GStore.article)
+        })
+        .catch(() => {
+          GStore.articles = []
+          console.log('cannot load article')
+          return { name: 'NetworkError' }
+        })
+    }
   },
   {
     path: '/add-article',
