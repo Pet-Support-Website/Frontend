@@ -10,7 +10,7 @@
       </p>
     </div>
     <form
-      @submit.prevent="updateArticle"
+      @submit.prevent="TogglePopup('buttonTrigger')"
       style="padding-left: 10px; padding-right: 10px"
     >
       <div class="row">
@@ -58,20 +58,31 @@
     </form>
     <div class="row" style="height: 25px"></div>
     <!-- <pre>{{ article }}</pre> -->
+    <EditPopup
+      v-if="popupTriggers.buttonTrigger"
+      :TogglePopup="() => TogglePopup('buttonTrigger')"
+      :article="this.article"
+    >
+      <h1 style="font-size: 30px; color: rgb(255, 51, 51)">WARNING</h1>
+      <p>Are you sure you want to delete "{{ this.article.title }}"?</p>
+    </EditPopup>
   </div>
 </template>
 
 <script>
+import { ref } from 'vue'
 import ArticleService from '@/services/ArticleService.js'
 import GStore from '@/store'
 import BaseInput from '@/components/BaseInput.vue'
 import BaseTextArea from '@/components/BaseTextArea.vue'
+import EditPopup from '@/components/EditPopup.vue'
 export default {
   inject: ['GStore'],
   props: ['id'],
   components: {
     BaseInput,
-    BaseTextArea
+    BaseTextArea,
+    EditPopup
   },
   data() {
     return {
@@ -99,6 +110,22 @@ export default {
     },
     scrollToTop() {
       window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    }
+  },
+  setup() {
+    const popupTriggers = ref({
+      buttonTrigger: false,
+      timedTrigger: false
+    })
+
+    const TogglePopup = (trigger) => {
+      popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+    }
+
+    return {
+      EditPopup,
+      popupTriggers,
+      TogglePopup
     }
   }
 }
