@@ -63,8 +63,8 @@
       :TogglePopup="() => TogglePopup('buttonTrigger')"
       :article="this.article"
     >
-      <h1 style="font-size: 30px; color: rgb(255, 51, 51)">WARNING</h1>
-      <p>Are you sure you want to delete "{{ this.article.title }}"?</p>
+      <h1 style="font-size: 30px; color: #1fdda4">CONFIRM CHANGES</h1>
+      <p>Would you like to save changes?</p>
     </EditPopup>
   </div>
 </template>

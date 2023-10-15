@@ -26,7 +26,7 @@ export default {
     updateArticle() {
       ArticleService.updateArticle(this.article).then(() => {
         alert(
-          'You are successfully edit the article "' + this.article.title + '"'
+          'You have successfully edit the article "' + this.article.title + '"'
         )
         this.$router.go(-1)
       })
