@@ -37,29 +37,27 @@
             style="height: 200px"
           />
           <br />
-          <div style="margin-top: 10px">
-            <button class="about-btn" type="submit" @click="scrollToTop">
-              Submit
-            </button>
+          <label>THE IMAGE OF ARTICLE</label>
+          <div style="margin-top: 5px">
+            <img class="article-img" :src="article.imgUrl" />
           </div>
           <div>
-            <p style="font-weight: bold">
+            <p style="font-weight: bold; margin-top: 5px">
               <a v-for="tag in article.tags" :key="tag.id">
                 #{{ tag.tagname }}
               </a>
             </p>
           </div>
-        </div>
-        <div class="col in-container" style="margin-left: 10px">
-          <label>THE IMAGE OF ARTICLE</label>
           <div>
-            <img class="article-img" :src="article.imgUrl" />
+            <button class="about-btn" type="submit" @click="scrollToTop">
+              Confirm Changes
+            </button>
           </div>
         </div>
       </div>
     </form>
     <div class="row" style="height: 25px"></div>
-    <pre>{{ article }}</pre>
+    <!-- <pre>{{ article }}</pre> -->
   </div>
 </template>
 
@@ -90,7 +88,7 @@ export default {
             params: { id: response.data.id }
           })
           this.GStore.flashMessage =
-            'You are successfully edit the article for ' + response.data.title
+            'You have successfully edit the article for ' + response.data.title
           setTimeout(() => {
             this.GStore.flashMessage = ''
           }, 3000)
@@ -129,5 +127,11 @@ export default {
   font-size: 18px;
   border: none;
   border-radius: 5px;
+}
+.article-img {
+  width: 100%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  object-fit: fill;
 }
 </style>

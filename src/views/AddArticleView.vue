@@ -131,7 +131,7 @@ export default {
               params: { id: response.data.id }
             })
             this.GStore.flashMessage =
-              'You are successfully add a new article for ' +
+              'You have successfully added a new article for ' +
               response.data.title
             setTimeout(() => {
               this.GStore.flashMessage = ''
@@ -193,5 +193,8 @@ export default {
   font-size: 18px;
   border: none;
   border-radius: 5px;
+}
+.about-btn:hover {
+  background-color: #1bbf8c;
 }
 </style>
