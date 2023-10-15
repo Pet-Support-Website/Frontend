@@ -131,7 +131,8 @@ export default {
               params: { id: response.data.id }
             })
             this.GStore.flashMessage =
-              'You are successfully add a new event for ' + response.data.title
+              'You are successfully add a new article for ' +
+              response.data.title
             setTimeout(() => {
               this.GStore.flashMessage = ''
             }, 3000)

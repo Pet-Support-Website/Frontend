@@ -20,7 +20,7 @@
             >
               -
             </button>
-            <button class="edit-button">Edit</button>
+            <button class="edit-button" @click.prevent="toEdit">Edit</button>
           </div>
         </div>
         <p style="font-weight: bold">{{ article.source }}</p>
@@ -48,6 +48,7 @@
       :TogglePopup="() => TogglePopup('buttonTrigger')"
       :id="this.article.id"
       :rounterindex="-1"
+      :title="this.article.title"
     >
       <h1 style="font-size: 30px; color: rgb(255, 51, 51)">WARNING</h1>
       <p>Are you sure you want to delete "{{ this.article.title }}"?</p>
@@ -69,6 +70,14 @@ export default {
   data() {
     return {
       article: GStore.article
+    }
+  },
+  methods: {
+    toEdit() {
+      this.$router.push({
+        name: 'EditArticleView',
+        params: { id: this.article.id }
+      })
     }
   },
   computed: {

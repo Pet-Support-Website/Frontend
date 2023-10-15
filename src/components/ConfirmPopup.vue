@@ -19,12 +19,14 @@
 <script>
 import ArticleService from '@/services/ArticleService'
 export default {
+  inject: ['GStore'],
   name: 'ConfirmPopup',
-  props: ['TogglePopup', 'id', 'rounterindex'],
+  props: ['TogglePopup', 'id', 'rounterindex', 'title'],
   methods: {
     deleteArticle() {
       let deleteID = { id: this.id }
       ArticleService.deleteArticle(deleteID).then(() => {
+        alert('You are successfully delete the article "' + this.title + '"')
         this.$router.go(this.rounterindex)
       })
     }

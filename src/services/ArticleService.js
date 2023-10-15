@@ -24,5 +24,8 @@ export default {
   },
   deleteArticle(article) {
     return apiClient.post('/deleteArticle', article)
+  },
+  updateArticle(article) {
+    return apiClient.post('/updateArticle', article)
   }
 }

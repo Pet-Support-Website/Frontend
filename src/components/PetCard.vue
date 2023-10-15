@@ -33,6 +33,7 @@
     :TogglePopup="() => TogglePopup('buttonTrigger')"
     :id="this.article.id"
     :rounterindex="0"
+    :title="this.article.title"
   >
     <h1 style="font-size: 30px; color: rgb(255, 51, 51)">WARNING</h1>
     <p>Are you sure you want to delete "{{ this.article.title }}"?</p>

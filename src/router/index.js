@@ -13,6 +13,7 @@ import LocationView from '@/views/LocationView.vue'
 import Login from '@/views/LoginView.vue'
 import AddArticle from '@/views/AddArticleView.vue'
 import AllArticlesView from '@/views/AllArticlesView.vue'
+import EditArticleView from '@/views/EditArticleView.vue'
 
 const routes = [
   {
@@ -71,6 +72,29 @@ const routes = [
         .catch(() => {
           GStore.tags = null
           console.log('cannot load tags')
+        })
+    }
+  },
+  {
+    path: '/edit-article/:id',
+    name: 'EditArticleView',
+    component: EditArticleView,
+    props: true,
+    beforeEnter: (to) => {
+      return ArticleService.getArticle(to.params.id)
+        .then((response) => {
+          GStore.article = response.data
+          document.title = response.data.title
+        })
+        .catch((error) => {
+          if (error.response && error.response.start == 404) {
+            return {
+              name: 'Network Error',
+              params: { resource: 'article' }
+            }
+          } else {
+            return { name: 'NetworkError' }
+          }
         })
     }
   },
